@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Compound Interest Problem</title>
+  <style>
+    body {
+      background: #f5f8fa;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      padding: 30px;
+    }
+    .container {
+      max-width: 680px;
+      margin: auto;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.06);
+      padding: 30px 28px 22px 28px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #2d7dd2;
+    }
+    .step {
+      margin: 16px 0;
+      background: #e9f0fd;
+      border-radius: 6px;
+      padding: 16px;
+      box-shadow: 0 2px 6px rgba(45,125,210,0.05);
+      font-size: 1.11em;
+    }
+    .number-box, .fraction-box {
+      display: inline-block;
+      background: #fff6e4;
+      color: #ad7e00;
+      border-radius: 8px;
+      padding: 2px 9px;
+      font-weight: bold;
+      margin: 0 4px;
+      border: 1px solid #f9e1b1;
+      letter-spacing: 0.05em;
+    }
+    .formula-highlight {
+      background: #d1fbea;
+      border-radius: 5px;
+      padding: 2px 8px;
+      color: #12926e;
+      font-weight: bold;
+      border: 1px solid #b6efda;
+      margin: 0 2px;
+    }
+    .arrow {
+      font-size: 1.44em;
+      color: #8bacd6;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    .input-row {
+      margin: 20px 0 10px 0;
+      padding: 14px;
+      background: #f4ecfd;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .input-label {
+      font-weight: 500;
+      color: #7e57c2;
+      margin-bottom: 2px;
+    }
+    .input-field {
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: 1px solid #c1b2e7;
+    }
+    .submit-btn {
+      margin-top: 12px;
+      padding: 8px 20px;
+      background: #5539e3;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    .result-box {
+      padding: 14px;
+      margin-top: 18px;
+      background: #fffde4;
+      border-radius: 8px;
+      color: #ad7e00;
+      border: 1px solid #f9e1b1;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Compound Interest Calculation Example</h2>
+
+  <!-- Example illustration -->
+  <div class="step">
+    <span class="number-box">Principal (P): {{ principal }}</span>
+    <span class="number-box">Rate (r): {{ rate }}%</span>
+    <span class="number-box">Time (t): {{ years }} years</span>
+  </div>
+
+  <div class="step">
+    <span class="arrow">&rarr;</span>
+    <span class="formula-highlight">A = P × (1 + r/100)<sup>n</sup></span>
+  </div>
+  
+  <div class="step">
+    <span class="arrow">&darr;</span>
+    <span class="number-box">Amount (A): {{ amount }}</span>
+  </div>
+  
+  {% if user_input %}
+  <!-- User input form -->
+  <form method="post" action="/user">
+    <div class="input-row">
+      <div class="input-label">Enter Principal:</div>
+      <input class="input-field" name="principal" type="number" required>
+      <div class="input-label">Enter Rate (%):</div>
+      <input class="input-field" name="rate" type="number" required>
+      <div class="input-label">Enter Years:</div>
+      <input class="input-field" name="years" type="number" required>
+      <button class="submit-btn" type="submit">Calculate</button>
+    </div>
+  </form>
+  {% endif %}
+  
+  {% if result %}
+  <div class="result-box">
+    Computed Compound Interest Result: {{ result }}
+  </div>
+  {% endif %}
+</div>
+</body>
+</html>
