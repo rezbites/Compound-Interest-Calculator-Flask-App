@@ -29,8 +29,16 @@ def index():
         amount=problem_examples[0]["amount"],
         user_input=False,
         result=None
+    ) + "<hr>" + render_template(
+        "interestcompounded.html",
+        principal=problem_examples[1]["principal"],
+        rate=problem_examples[1]["rate"],
+        years=problem_examples[1]["years"],
+        amount=problem_examples[1]["amount"],
+        user_input=False,
+        result=None
+    )
     
-
 @app.route("/user", methods=["GET", "POST"])
 def user():
     if request.method == "POST":
