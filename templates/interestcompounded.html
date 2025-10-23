@@ -99,6 +99,30 @@
   <h2>Compound Interest Calculation Example</h2>
 
   <!-- Example illustration -->
+{% if examples %}
+  {% for e in examples %}
+  <div class="step">
+    <span class="number-box">Principal (P): {{ e.principal }}</span>
+    <span class="number-box">Rate (r): {{ e.rate }}%</span>
+    <span class="number-box">Time (t): {{ e.years }} years</span>
+  </div>
+
+  <div class="step">
+    <span class="arrow">&rarr;</span>
+    <span class="formula-highlight">A = P × (1 + r/100)<sup>n</sup></span>
+  </div>
+  
+  <div class="step">
+    <span class="arrow">&darr;</span>
+    <span class="number-box">Amount (A): {{ e.amount }}</span>
+  </div>
+
+  {% if not loop.last %}
+    <hr>
+  {% endif %}
+  {% endfor %}
+{% else %}
+  <!-- Fallback to single values -->
   <div class="step">
     <span class="number-box">Principal (P): {{ principal }}</span>
     <span class="number-box">Rate (r): {{ rate }}%</span>
@@ -114,7 +138,7 @@
     <span class="arrow">&darr;</span>
     <span class="number-box">Amount (A): {{ amount }}</span>
   </div>
-  
+{% endif %}
   {% if user_input %}
   <!-- User input form -->
   <form method="post" action="/user">
