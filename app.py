@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 # Two solved example problems
 problem_examples = [
@@ -23,20 +23,8 @@ def index():
     # Show two solved examples (no form)
     return render_template(
         "interestcompounded.html",
-        principal=problem_examples[0]["principal"],
-        rate=problem_examples[0]["rate"],
-        years=problem_examples[0]["years"],
-        amount=problem_examples[0]["amount"],
-        user_input=False,
-        result=None
-    ) + "<hr>" + render_template(
-        "interestcompounded.html",
-        principal=problem_examples[1]["principal"],
-        rate=problem_examples[1]["rate"],
-        years=problem_examples[1]["years"],
-        amount=problem_examples[1]["amount"],
-        user_input=False,
-        result=None
+        examples=problem_examples,
+        user_input=False
     )
     
 @app.route("/user", methods=["GET", "POST"])
@@ -67,5 +55,5 @@ def user():
         result=None
     )
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     app.run(debug=True)
